@@ -37,9 +37,9 @@ This allows you to have an screen in the RPI.
 - For user pi, the virtual desktop already exist, for other users you have to launch it with the following command
 
 ```
-vncserver -geometry 800x600
+vncserver -geometry 1280x720
 ```
-*you can specify a different resolution if you want. keep in mind that you will be up to 3 people in the same device.*
+*You can specify a different resolution if you want. keep in mind that you will be up to 3 people in the same device.*
 
 - keep note of the screen, in the case is :1
 
