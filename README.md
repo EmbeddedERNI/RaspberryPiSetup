@@ -16,13 +16,14 @@
         - [Signal and Slot](#signal-and-slot)
     - [Mosquitto from Qt](#mosquitto-from-qt)
         - [PRACTICE](#practice)
-        - [TASK](#task)
+        - [TASK: C++ Thermostat](#task-c-thermostat)
     - [QML basics](#qml-basics)
         - [Sections to read.](#sections-to-read)
         - [Basic components](#basic-components)
-        - [TASK](#task)
+        - [TASK: QML interface](#task-qml-interface)
     - [Mosquitto + Qt + QML](#mosquitto-qt-qml)
-        - [TASK](#task)
+        - [TASK QML MQTT client](#task-qml-mqtt-client)
+    - [FINAL TASK: QML Thermostat](#final-task-qml-thermostat)
     
 # Raspberry Pi Setup
 This repository contains all the binaries that you may need along with all the instructions to setup the raspberry pi.
@@ -260,10 +261,10 @@ Build a simple QT/C++ application that receives and sends messages.
 - Then, subscribe to a channel and send the messages using mosquitto_pub.
 - finally, reply to received messages with other messages to a different channel.
 
-### TASK
+### TASK: C++ Thermostat 
 Implement a class named Thermostat to handle the Thermostat behaviour with the following interface.
 
-
+**You are free to create method that you need, but you can't remove any method**
 
 ```
 #ifndef THERMOSTAT_H
@@ -334,6 +335,7 @@ http://192.168.0.164/PerformanceIOT/qmqtt/blob/master/examples/mqtt/client/examp
 it contains an example of how to inherit the QMQTT::Client and add functionality. you can start from here if you find it too hard.
 
 ## QML basics
+
 Inside QtCreator, there is a Help tab where you can get all the documentation. 
 
 ### Sections to read.
@@ -346,6 +348,7 @@ This secctions of the Qt Creator help may be useful.
 You can begin creating a new qml project with the steps indicated in [Create a project](#create-a-project) section. 
 
 ### Basic components
+
 This is a list of the basic elements that you may need to create.
 - **Rectangle**: Creates a simple rectangle with color. useful for simple indicators.
 - **Button**:You can create simple buttons that emit signals onClicked.
@@ -356,15 +359,44 @@ This is a list of the basic elements that you may need to create.
 
 if you type the component in a QML file, Qt creator will recognize it and highlight it in purple. If you select it and press F1, the item help will popup.
 
-### TASK
+### TASK: QML interface
+
 - Create a simple interface with a **Button** that prints in the console and updates the text in a label with the message inside a **TextField**.
 
 ## Mosquitto + Qt + QML
 We already have a Qt class that handles the messages from mosquitto, what we need now, is to export this class to QML engine in order to get the mosquitto messages in a QML class.
 
+There is an special function that must be called in main.cpp before the creation of the QML engine to register our custom class.
 
-  ### TASK
+```
+    // qmlRegisterType<MyType>(QML impor statement, major version, minor version, QML item name)
+    qmlRegisterType<QmlClient>("QMQTT",1,0,"MQTTClient");
+```
+This will register the class QmlClient in the QML engine import path QMQTT 1.0 with the name MQTTClient.
+
+Now we only need to create the object to use it. This is how you can use the class that we are going to implement in the following section.
+
+```
+import QMQTT 1.0
+...
+    MQTTClient{
+        id: qmqtt
+        hostip: "192.168.0.164"
+        subscribeTopic: base.groupId + "/#"
+        onNewMessage: {
+            console.log(topic +": " + message)
+        }
+    }
+...
+```
+
+
+### TASK QML MQTT client
+
+Create a simple application with GUI that allows you to send messages over MQTT.
+
 Implement a class named QmlClient that implements the following interface.
+This will allow us to control MQTT from QML engine
 
 **You are free to create method that you need, but you can't remove any method**
 ```
@@ -423,5 +455,23 @@ private:
 #endif // QMLCLIENT_H
 
 ```  
+
+Create different **TextField** to allow the user to enter the IP, port, Topic and Message and a button to send the message. You can start from the application that we did in the [QML basics](#qml-basics).
+
+**HINT**: You will find useful the QML item **GridLayout** to arrange the items in a cool from way. 
+
+## FINAL TASK: QML Thermostat
+
+Starting from the last application, you can remplace the QMQTT::Client * client with the class Thermostat that we implemented in the section [TASK: C++ Thermostat](#task-c-thermostat) to automatically expose all the functionality of the thermometer to QML. We only need to define the properties with the Q_PROPERTY macro just like the QmlClient class.
+
+```
+// Example with temp property
+Q_PROPERTY(temp READ getTemp NOTIFY tempChanged)
+```
+
+
+
+
+
 
 
