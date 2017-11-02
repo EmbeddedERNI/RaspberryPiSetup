@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="file:///home/victor/.vscode/extensions/yzhang.markdown-all-in-one-0.11.0/media/markdown.css">
+        <link rel="stylesheet" type="text/css" href="file:///home/victor/.vscode/extensions/yzhang.markdown-all-in-one-0.11.0/media/tomorrow.css">
+        <link rel="stylesheet" type="text/css" href="file:///home/victor/.vscode/extensions/yzhang.markdown-all-in-one-0.11.0/media/checkbox.css">
+        
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <p><strong>CONTENTS</strong></p>
+<ul>
+<li><a href="#raspberry-pi-setup">Raspberry Pi Setup</a>
+<ul>
+<li><a href="#download-this-repository">Download this repository</a></li>
+<li><a href="#install-graphical-git-client-optional">Install Graphical git client (Optional)</a>
+<ul>
+<li><a href="#gitkraken-windows-ssh">GitKraken Windows SSH</a></li>
+<li><a href="#gitkraken-linux-ssh">GitKraken Linux SSH</a></li>
+</ul>
+</li>
+<li><a href="#configure-raspberrypi-git">Configure Raspberrypi Git</a>
+<ul>
+<li><a href="#setup-ssh-keys">Setup SSH keys</a></li>
+</ul>
+</li>
+<li><a href="#connect-ssh">Connect SSH</a></li>
+<li><a href="#connect-vnc">Connect VNC</a></li>
+</ul>
+</li>
+<li><a href="#modules">Modules</a>
+<ul>
+<li><a href="#mosquitto">Mosquitto</a>
+<ul>
+<li><a href="#quick-test">Quick test</a></li>
+<li><a href="#wildcard-topic-subscriptions">Wildcard Topic Subscriptions</a></li>
+</ul>
+</li>
+<li><a href="#mosquitto-from-c">Mosquitto from C</a></li>
+<li><a href="#qt-creator">Qt creator</a>
+<ul>
+<li><a href="#create-a-project">Create a project</a></li>
+<li><a href="#signal-and-slot">Signal and Slot</a></li>
+</ul>
+</li>
+<li><a href="#mosquitto-from-qt">Mosquitto from Qt</a>
+<ul>
+<li><a href="#practice">PRACTICE</a></li>
+<li><a href="#task-c-thermostat">TASK: C++ Thermostat</a></li>
+</ul>
+</li>
+<li><a href="#qml-basics">QML basics</a>
+<ul>
+<li><a href="#sections-to-read">Sections to read.</a></li>
+<li><a href="#basic-components">Basic components</a></li>
+<li><a href="#task-qml-interface">TASK: QML interface</a></li>
+</ul>
+</li>
+<li><a href="#mosquitto-qt-qml">Mosquitto + Qt + QML</a>
+<ul>
+<li><a href="#task-qml-mqtt-client">TASK QML MQTT client</a></li>
+</ul>
+</li>
+<li><a href="#task-qml-thermostat">TASK: QML Thermostat</a></li>
+</ul>
+</li>
+<li><a href="#challenges">Challenges</a></li>
+<li><a href="#questions">Questions</a></li>
+</ul>
+<h1 id="raspberry-pi-setup">Raspberry Pi Setup</h1>
+<p>This repository contains all the binaries that you may need along with all the instructions to setup the raspberry pi.</p>
+<h2 id="download-this-repository">Download this repository</h2>
+<p>In the overview tab there is a button just bellow the repository name that allows you to download the full repository as a package.</p>
+<h2 id="install-graphical-git-client-optional">Install Graphical git client (Optional)</h2>
+<p>This is usefull if you want to have the repositories in your own computer.
+You are free to use any git client of your choice if you are familiar with it. we will be using GitKraken.</p>
+<h3 id="gitkraken-windows-ssh">GitKraken Windows SSH</h3>
+<ul>
+<li>Run the installer in the Binary folder</li>
+<li>Open preferences &gt; Authentication  and click in &quot;Generate&quot; button to generate a key.</li>
+<li>Copy the public key and add it to your profile in GitLab.</li>
+</ul>
+<h3 id="gitkraken-linux-ssh">GitKraken Linux SSH</h3>
+<ul>
+<li>Instal the .deb package.</li>
+<li>Use ssh-keygen command to generate a key.</li>
+<li>Add the key to GitKraken in preferences &gt; Authentication.</li>
+<li>Add the public key to your GitLab profile.</li>
+</ul>
+<h2 id="configure-raspberrypi-git">Configure Raspberrypi Git</h2>
+<p>If you want to share code using the GitLab Server, you will need to register and to setup a SSH key.</p>
+<h3 id="setup-ssh-keys">Setup SSH keys</h3>
+<ul>
+<li>cd to ~/.ssh/</li>
+<li>ssh-keygen -t rsa</li>
+<li>set name to &quot;id_rsa&quot;</li>
+<li>left passphrase blank</li>
+<li>Add the id_rsa.pub file content to your GitLab account settings &gt; ssh keys.</li>
+</ul>
+<p>With this information, now you should be able to use git push and git pull without password.</p>
+<h2 id="connect-ssh">Connect SSH</h2>
+<p>If you are familiar with ssh, you can use any client of your choice, we will use MobaXTerm for windows and regular terminal for Linux.</p>
+<ul>
+<li>Launch MobaXTerm portable from binaries.</li>
+<li>Get your RPI IP Address, we will tell to each group the right one.</li>
+<li>Create a new session (Top left) using the IP and one of the following users with password &quot;frambuesa&quot;
+<ul>
+<li>pi</li>
+<li>pi2</li>
+<li>pi3</li>
+</ul>
+</li>
+</ul>
+<p>At this point you should be able to get full control of your RPI.</p>
+<h2 id="connect-vnc">Connect VNC</h2>
+<p>This allows you to have an screen in the RPI.</p>
+<ul>
+<li>Install RealVNC from binaries.</li>
+<li>For user pi, the virtual desktop already exist, for other users you have to launch it with the following command</li>
+</ul>
+<pre><code>vncserver -geometry 1280x720
+</code></pre>
+<p><em>You can specify a different resolution if you want. keep in mind that you will be up to 3 people in the same device.</em></p>
+<ul>
+<li>keep note of the screen, in the case is :1</li>
+</ul>
+<pre><code>New desktop is raspberrypi:1 (192.168.0.159:1)
+</code></pre>
+<ul>
+<li>Create the connection with RealVNC using the ip from the previous command.</li>
+<li>Introduce your user and password <em>pi, pi2 or p3 and &quot;frambuesa&quot;</em></li>
+</ul>
+<p>At this point you should be able to use the raspberry pi as a normal desktop computer.</p>
+<h1 id="modules">Modules</h1>
+<h2 id="mosquitto">Mosquitto</h2>
+<p><em>Eclipse Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 3.1 and 3.1.1. MQTT provides a lightweight method of carrying out messaging using a publish/subscribe model. This makes it suitable for &quot;Internet of Things&quot; messaging such as with low power sensors or mobile devices such as phones, embedded computers or microcontrollers like the Arduino.</em></p>
+<p>It's included in the raspbian default ppa repository so using mossquitto is as easy as.</p>
+<pre><code>sudo apt install mosquitto mosquitto-clients mosquitto-dev
+</code></pre>
+<p>This will setup a local mosquitto server along with the clients to interact with it. The dev package is used for creating C++ programs that we will be using later.</p>
+<h3 id="quick-test">Quick test</h3>
+<p>To give a quick test you can open two different terminals and send messages from one to the other.</p>
+<p>The communication is publisher/subscriber based and the messages are identified by a topic defines with the paramter -t.</p>
+<p>In the first terminal we setup a subscriber with this command.</p>
+<pre><code>mosquitto_sub -t /test
+</code></pre>
+<p>and then we send a message from the other terminal with</p>
+<pre><code>mosquitto_pub -t /test -m hi
+</code></pre>
+<p>If everything is ok, you should see the message in the subscriber.</p>
+<p>Now you should add the -h (host) parameter to point the common host to share your messages with others.</p>
+<h3 id="wildcard-topic-subscriptions">Wildcard Topic Subscriptions</h3>
+<p>This is copy/paste from the official docs</p>
+<p>In addition to allowing clients to subscribe to specific topics, mosquitto also allows the use of two wildcards in subscriptions. + is the wildcard used to match a single level of hierarchy. For example, for a topic of &quot;a/b/c/d&quot;, the following example subscriptions will match:</p>
+<pre><code>    a/b/c/d
+    +/b/c/d
+    a/+/c/d
+    a/+/+/d
+    +/+/+/+
+</code></pre>
+<p>The following subscriptions will not match:</p>
+<pre><code>    a/b/c
+    b/+/c/d
+    +/+/+
+</code></pre>
+<p>The second wildcard is # and is used to match all subsequent levels of hierarchy. With a topic of &quot;a/b/c/d&quot;, the following example subscriptions will match:</p>
+<pre><code>    a/b/c/d
+    #
+    a/#
+    a/b/#
+    a/b/c/#
+    +/b/c/#
+</code></pre>
+<p>The $SYS hierarchy does not match a subscription of &quot;#&quot;. If you want to observe the entire $SYS hierarchy, subscribe to $SYS/#.</p>
+<p>Note that the wildcards must be only ever used on their own, so a subscription of &quot;a/b+/c&quot; is not valid use of a wildcard. The # wildcard must only ever be used as the final character of a subscription.</p>
+<h2 id="mosquitto-from-c">Mosquitto from C</h2>
+<p>There is a C library but we are not using this, if you are interested in this topic there is a lot of information in the official page.</p>
+<h2 id="qt-creator">Qt creator</h2>
+<p><strong>Definition from Wikipedia</strong></p>
+<p><em>Qt (/kjuːt/ &quot;cute&quot;) is a cross-platform application framework that is used for developing application software that can be run on various software and hardware platforms with little or no change in the underlying codebase, while still being a native application with native capabilities and speed.</em></p>
+<p>We are using Qt mainly for the simplicity of the code, if you are already familiar with it, you may skip this section.</p>
+<h3 id="create-a-project">Create a project</h3>
+<ul>
+<li>Launch the Qt creator app from the app panel in app <strong>&quot;Programming &gt; Qt Creator&quot;</strong>.</li>
+<li>Select the tab <strong>&quot;Welcome&quot;</strong> from the left panel and click in <strong>New project</strong>.</li>
+<li>Select the project type <strong>&quot;Application&quot;</strong> and choose <strong>&quot;Qt Console Application&quot;</strong> if you don't need an interface or <strong>&quot;Qt Quick controls 2 Application&quot;</strong> if you want a QML interface.</li>
+<li>Select the project folder and name, It's a good idea to keep all the Qt Projects inside a folder named  <strong>&quot;QtProjects&quot;</strong>, provably in the home directory or in Documents folder. <em>Avoid spaces in the file path</em>.</li>
+<li>Select the compilation kit, you only have the Desktop kit in the Raspberry pi.</li>
+<li>Click play on the down left part of the screen to test the project.</li>
+</ul>
+<p>If you have a Console application, you won't see anything. To check if it's working you can add a &quot;Hello world&quot; print with the following code.</p>
+<pre><code>#include <QCoreApplication>
+// For debug prints
+#include <QDebug>
+
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+    // Prints "Hello World!" and a line break
+    qDebug() << "Hello World!" << endl;
+
+    return a.exec();
+}
+</code></pre>
+<h3 id="signal-and-slot">Signal and Slot</h3>
+<p>We are going to use the Signal and Slot communication available in the Qt framework to handle the events. You can read about the functionality in the Qt Creator documentation.</p>
+<p><a href="qthelp://org.qt-project.qtcore.571/qtcore/signalsandslots.html">Qt Core &gt; Core functionalities &gt; Signals &amp; Slots</a></p>
+<p>In this project you only need to know how to create a handler function and connect the signal to it. This is done with the connect function.</p>
+<pre><code>// Example of the connection of the connected signal 
+
+// header
+public slots:
+    void onConnected();
+
+// source
+void MyDerivedClass::onConnected(){
+    //do something
+}
+
+// connection, provably on constructor
+...
+// connect(Sender object , Sender Signal, Receiver object, Receiver Slot)
+connect(this, SIGNAL(connected()), this, SLOT(onConnected()));
+...
+
+</code></pre>
+<p>Sending a signal it's just like calling the function but adding the word emit before it.</p>
+<pre><code>// Header
+signals:
+    void onMessageReceived();
+
+// Usage
+emit onMessageReceived();
+</code></pre>
+<h2 id="mosquitto-from-qt">Mosquitto from Qt</h2>
+<p><a href="https://github.com/emqtt/qmqtt">QMQTT</a> is an implementation of the mqtt protocol in Qt.</p>
+<p>We have compiled and installed the libraries for the raspberry so you can use them in any project including it in the .pro file of your project.</p>
+<pre><code>QT += mqtt
+</code></pre>
+<p>Then you can access the classes with</p>
+<pre><code>#include "qmqtt.h"
+</code></pre>
+<p>The class QMQTT::Client contains all that we need. It has a lot of functionality, but we only need the most basic of them.</p>
+<p>Just like any other Qt object, QMQTT::Client is event driven and contains a lot of useful signals to subscribe. you can get the list directly from the qmqtt_client.h.</p>
+<p>This is an example of a derived class constructor connecting the desired signals.</p>
+<pre><code>explicit Subscriber(const QHostAddress& host ,
+                    const quint16 port ,
+                    QObject* parent = NULL)
+    : QMQTT::Client(host, port, parent)
+    , _qout(stdout)
+{
+    connect(this, SIGNAL(connected()), this, SLOT(onConnected()));
+    connect(this, SIGNAL(subscribed(QString,quint8)), this, SLOT(onSubscribed(QString)));
+    connect(this, SIGNAL(received(QMQTT::Message)), this, SLOT(onReceived(QMQTT::Message)));
+    this->setAutoReconnect(true);
+    this->connectToHost();
+}
+</code></pre>
+<p>Also, you have a function to send messages.</p>
+<pre><code>// Send a message with topic and string payload, id should be unique
+void Subscriber::publishMsg(const quint16 id, const QString &topic, const QString &message)
+{
+    QMQTT::Message message_object(id, topic, message.toUtf8());
+    this->publish(message_object);
+}
+</code></pre>
+<p>If you check the class QMQTT::Message you will get an idea of the information contained in the messages.</p>
+<h3 id="practice">PRACTICE</h3>
+<p>Build a simple QT/C++ application that receives and sends messages.</p>
+<p><strong>Hints</strong></p>
+<ul>
+<li>Create first an application that send a message on run and catch the message from a terminal using the utility mosquitto_sub.</li>
+<li>Then, subscribe to a channel and send the messages using mosquitto_pub.</li>
+<li>finally, reply to received messages with other messages to a different channel.</li>
+</ul>
+<h3 id="task-c-thermostat">TASK: C++ Thermostat</h3>
+<p>Implement a class named Thermostat to handle the Thermostat behaviour with the following interface.</p>
+<p>You can clone it from http://192.168.0.2:8081/PerformanceIOT/ThermostatLogic</p>
+<p><strong>You are free to create method that you need, but you can't remove any method</strong></p>
+<pre><code>#ifndef THERMOSTAT_H
+#define THERMOSTAT_H
+
+#include <QObject>
+#include "qmqtt.h"
+
+class Thermostat : public QMQTT::Client
+{
+
+public:
+    explicit Thermostat(
+           const QString baseMQTTTopic = "device1/",
+           const QHostAddress& host = QHostAddress::LocalHost,
+           const quint16 port = 1883,
+           QObject* parent = NULL);
+    
+    
+    bool getHeaterStatus();
+    float getTemp() const;
+    float getHumidity() const;
+    float getMaxTemp() const;
+    float getMinTemp() const;
+
+signals:
+    void heaterStatusChanged();
+    void tempChanged();
+    void humidityChanged();
+    void maxTempChanged();
+    void minTempChanged();
+
+public slots:
+    void setMaxTemp();
+    void setMinTemp();
+
+private:
+    // we need to append this to all the paths, this will help to separate messages from different sensors but keeping the same interface.
+    QString baseMQTTTopic;
+
+    // Suggestion: implement a function like this that returns the full path ready to use.
+    QString getTopic(QString topic);
+
+    // Topics
+    const QString temperatureValueTopic = "sensor/temp";
+    const QString humidityValueTopic = "sensor/humidity";
+    const QString switchValueTopic = "sensor/switch";
+    
+    const QString ledStatusTopic = "indicator/led";
+    const QString relayStatus = "indicator/relay";
+    
+    const QString maxTempValueTopic = "config/maxTemp";
+    const QString minTempValueTopic = "config/minTemp";
+    
+};
+
+#endif // THERMOSTAT_H
+</code></pre>
+<p>This application should act as an Interface between the LowLevel and HighLevel applications.</p>
+<p><strong>Code example</strong></p>
+<p>You have an example in Gitlab/qmqtt.</p>
+<p><code>The url may be incorrect, replace the address with the server ip</code></p>
+<p>http://192.168.0.164/PerformanceIOT/qmqtt/blob/master/examples/mqtt/client/example.cpp</p>
+<p>it contains an example of how to inherit the QMQTT::Client and add functionality. you can start from here if you find it too hard.</p>
+<h2 id="qml-basics">QML basics</h2>
+<p>Inside QtCreator, there is a Help tab where you can get all the documentation.</p>
+<h3 id="sections-to-read">Sections to read.</h3>
+<p>This secctions of the Qt Creator help may be useful.</p>
+<ul>
+<li><strong>Qt QML &gt; Guides and other information &gt; The QML reference</strong>: General information about QML engine.</li>
+<li><strong>Qt Quick &gt; Positioning</strong>: information about how to position items in qml</li>
+<li><strong>Qt Quick Controls &gt; QML types</strong>: general purpose controls.</li>
+<li><strong>Qt QML &gt; Integrating QML with C++ &gt; Integrating QML and C++</strong>: How to connect C++ and QML, we need this to connect mosquitto to QML.</li>
+</ul>
+<p>You can begin creating a new qml project with the steps indicated in <a href="#create-a-project">Create a project</a> section.</p>
+<h3 id="basic-components">Basic components</h3>
+<p>This is a list of the basic elements that you may need to create.</p>
+<ul>
+<li><strong>Rectangle</strong>: Creates a simple rectangle with color. useful for simple indicators.</li>
+<li><strong>Button</strong>:You can create simple buttons that emit signals onClicked.</li>
+<li><strong>LabeL</strong>: Contains text.</li>
+<li><strong>TextField</strong>: User text input.</li>
+<li><strong>Row/Column/Flow</strong>: Are container items that automatically arrange the contained objects .</li>
+<li><strong>Timer</strong>: fires events at a desired interval.</li>
+</ul>
+<p>if you type the component in a QML file, Qt creator will recognize it and highlight it in purple. If you select it and press F1, the item help will popup.</p>
+<h3 id="task-qml-interface">TASK: QML interface</h3>
+<ul>
+<li>Create a simple interface with a <strong>Button</strong> that prints in the console and updates the text in a label with the message inside a <strong>TextField</strong>.</li>
+</ul>
+<h2 id="mosquitto-qt-qml">Mosquitto + Qt + QML</h2>
+<p>We already have a Qt class that handles the messages from mosquitto, what we need now, is to export this class to QML engine in order to get the mosquitto messages in a QML class.</p>
+<p>There is an special function that must be called in main.cpp before the creation of the QML engine to register our custom class.</p>
+<pre><code>    // qmlRegisterType<MyType>(QML impor statement, major version, minor version, QML item name)
+    qmlRegisterType<QmlClient>("QMQTT",1,0,"MQTTClient");
+</code></pre>
+<p>This will register the class QmlClient in the QML engine import path QMQTT 1.0 with the name MQTTClient.</p>
+<p>Now we only need to create the object to use it. This is how you can use the class that we are going to implement in the following section.</p>
+<pre><code>import QMQTT 1.0
+...
+    MQTTClient{
+        id: qmqtt
+        hostip: "192.168.0.164"
+        subscribeTopic: base.groupId + "/#"
+        onNewMessage: {
+            console.log(topic +": " + message)
+        }
+    }
+...
+</code></pre>
+<h3 id="task-qml-mqtt-client">TASK QML MQTT client</h3>
+<p>Create a simple application with GUI that allows you to send messages over MQTT.</p>
+<p>Implement a class named QmlClient that implements the following interface.
+This will allow us to control MQTT from QML engine</p>
+<p><strong>You are free to create method that you need, but you can't remove any method</strong></p>
+<pre><code>#ifndef QMLCLIENT_H
+#define QMLCLIENT_H
+
+#include <QObject>
+#include "qmqtt.h"
+
+
+class QmlClient : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QString hostip READ hostString WRITE setHostString NOTIFY hostStringChanged)
+    Q_PROPERTY(int port READ port WRITE setPort NOTIFY portChanged)
+    Q_PROPERTY(bool isConnected READ isConnected NOTIFY isConnectedChanged)
+    // The topic to be subscribed. 
+    Q_PROPERTY(QString subscribeTopic READ subscribeTopic WRITE setSubscribeTopic NOTIFY subscribeTopicChanged)
+
+public:
+    explicit QmlClient(QObject *parent = nullptr);
+
+    QString hostString() const;
+    void setHostString(const QString host);
+
+    int port() const;
+    void setPort(const int port);
+
+    bool isConnected() const;
+    void setIsConnected(const bool status);
+
+    QString subscribeTopic() const;
+    void setSubscribeTopic(const QString topic);
+
+
+signals:
+    void hostStringChanged();
+    void portChanged();
+    void isConnectedChanged();
+    void subscribeTopicChanged();
+
+    void newMessage(QString topic, QString message);
+
+public slots:
+    void publishMsg(const quint16 id, const QString &topic, const QString &message);
+    void subscribed(QString topic);
+    void received(QMQTT::Message message);
+
+
+private:
+    // Internal client, mainly we need to wrap the functions from this class.
+    QMQTT::Client *_client;
+
+};
+
+#endif // QMLCLIENT_H
+
+</code></pre>
+<p>Create different <strong>TextField</strong> to allow the user to enter the IP, port, Topic and Message and a button to send the message. You can start from the application that we did in the <a href="#qml-basics">QML basics</a>.</p>
+<p><strong>HINT</strong>: You will find useful the QML item <strong>GridLayout</strong> to arrange the items in a cool from way.</p>
+<h2 id="task-qml-thermostat">TASK: QML Thermostat</h2>
+<p>Starting from the last application, you can subscribe to the high level messages from your previous app and create a visual interface to the Thermostat.</p>
+<p><strong>Remember to run both apps at the same time.</strong></p>
+<h1 id="challenges">Challenges</h1>
+<ul>
+<li>Add extra functionalities
+<ul>
+<li>Humidity threshold.</li>
+<li>Day/Night configuration.</li>
+<li>Manual mode.</li>
+</ul>
+</li>
+<li>Improve interface.
+<ul>
+<li>Add information about connection status, server ip...</li>
+<li>Add Children-Lock system.</li>
+</ul>
+</li>
+</ul>
+<h1 id="questions">Questions</h1>
+<p>Which technology is not being used in this project?</p>
+<ul>
+<li>C++</li>
+<li>JavaScript</li>
+<li>Mosquitto</li>
+<li>C# (X)</li>
+</ul>
+<p>If you want to subscribe to all the temperatures from the sensors in the room knowing that the pattern is /group/sensor/temp/. which of this wildcards is valid.</p>
+<ul>
+<li>/#/sensor/temp</li>
+<li>/+/sensor/temp (X)</li>
+<li>/+/temp</li>
+<li>/+/#</li>
+</ul>
+
+    </body>
+    </html>

@@ -1,9 +1,11 @@
 **CONTENTS**
 - [Raspberry Pi Setup](#raspberry-pi-setup)
     - [Download this repository](#download-this-repository)
-    - [Install git client](#install-git-client)
-        - [Windows SSH](#windows-ssh)
-        - [Linux SSH](#linux-ssh)
+    - [Install Graphical git client (Optional)](#install-graphical-git-client-optional)
+        - [GitKraken Windows SSH](#gitkraken-windows-ssh)
+        - [GitKraken Linux SSH](#gitkraken-linux-ssh)
+    - [Configure Raspberrypi Git](#configure-raspberrypi-git)
+        - [Setup SSH keys](#setup-ssh-keys)
     - [Connect SSH](#connect-ssh)
     - [Connect VNC](#connect-vnc)
 - [Modules](#modules)
@@ -23,7 +25,9 @@
         - [TASK: QML interface](#task-qml-interface)
     - [Mosquitto + Qt + QML](#mosquitto-qt-qml)
         - [TASK QML MQTT client](#task-qml-mqtt-client)
-    - [FINAL TASK: QML Thermostat](#final-task-qml-thermostat)
+    - [TASK: QML Thermostat](#task-qml-thermostat)
+- [Challenges](#challenges)
+- [Questions](#questions)
     
 # Raspberry Pi Setup
 This repository contains all the binaries that you may need along with all the instructions to setup the raspberry pi.
@@ -31,22 +35,35 @@ This repository contains all the binaries that you may need along with all the i
 ## Download this repository
 In the overview tab there is a button just bellow the repository name that allows you to download the full repository as a package.
 
-## Install git client
+## Install Graphical git client (Optional)
+This is usefull if you want to have the repositories in your own computer. 
 You are free to use any git client of your choice if you are familiar with it. we will be using GitKraken.
 
-### Windows SSH
+### GitKraken Windows SSH
 - Run the installer in the Binary folder
 - Open preferences > Authentication  and click in "Generate" button to generate a key.
 - Copy the public key and add it to your profile in GitLab.
 
-### Linux SSH
+### GitKraken Linux SSH
 - Instal the .deb package.
 - Use ssh-keygen command to generate a key.
 - Add the key to GitKraken in preferences > Authentication.
 - Add the public key to your GitLab profile.
 
+## Configure Raspberrypi Git
+If you want to share code using the GitLab Server, you will need to register and to setup a SSH key.
+
+### Setup SSH keys
+- cd to ~/.ssh/
+- ssh-keygen -t rsa
+- set name to "id_rsa"
+- left passphrase blank
+- Add the id_rsa.pub file content to your GitLab account settings > ssh keys.
+
+With this information, now you should be able to use git push and git pull without password.
+
 ## Connect SSH 
-If you are familiar with ssh, you can use any client of your choice, we will use MobaXTerm for windows.
+If you are familiar with ssh, you can use any client of your choice, we will use MobaXTerm for windows and regular terminal for Linux.
 
 - Launch MobaXTerm portable from binaries.
 - Get your RPI IP Address, we will tell to each group the right one.
@@ -264,6 +281,8 @@ Build a simple QT/C++ application that receives and sends messages.
 ### TASK: C++ Thermostat 
 Implement a class named Thermostat to handle the Thermostat behaviour with the following interface.
 
+You can clone it from http://192.168.0.2:8081/PerformanceIOT/ThermostatLogic
+
 **You are free to create method that you need, but you can't remove any method**
 
 ```
@@ -285,10 +304,10 @@ public:
     
     
     bool getHeaterStatus();
-    float getTemp();
-    float getHumidity();
-    float getMaxTemp();
-    float getMinTemp();
+    float getTemp() const;
+    float getHumidity() const;
+    float getMaxTemp() const;
+    float getMinTemp() const;
 
 signals:
     void heaterStatusChanged();
@@ -302,10 +321,10 @@ public slots:
     void setMinTemp();
 
 private:
-    // we need to append this to all the paths, this will help to separate messages from diferent sensors but keeping the same interface.
+    // we need to append this to all the paths, this will help to separate messages from different sensors but keeping the same interface.
     QString baseMQTTTopic;
 
-    // Sugestion: implement a function like this that returns the full path ready to use.
+    // Suggestion: implement a function like this that returns the full path ready to use.
     QString getTopic(QString topic);
 
     // Topics
@@ -323,6 +342,8 @@ private:
 
 #endif // THERMOSTAT_H
 ```
+
+This application should act as an Interface between the LowLevel and HighLevel applications. 
 
 **Code example**
 
@@ -460,15 +481,35 @@ Create different **TextField** to allow the user to enter the IP, port, Topic an
 
 **HINT**: You will find useful the QML item **GridLayout** to arrange the items in a cool from way. 
 
-## FINAL TASK: QML Thermostat
+## TASK: QML Thermostat 
+Starting from the last application, you can subscribe to the high level messages from your previous app and create a visual interface to the Thermostat.
 
-Starting from the last application, you can remplace the QMQTT::Client * client with the class Thermostat that we implemented in the section [TASK: C++ Thermostat](#task-c-thermostat) to automatically expose all the functionality of the thermometer to QML. We only need to define the properties with the Q_PROPERTY macro just like the QmlClient class.
+**Remember to run both apps at the same time.**
 
-```
-// Example with temp property
-Q_PROPERTY(temp READ getTemp NOTIFY tempChanged)
-```
+# Challenges
 
+- Add extra functionalities
+    - Humidity threshold.
+    - Day/Night configuration.
+    - Manual mode.
+- Improve interface.
+    - Add information about connection status, server ip...
+    - Add Children-Lock system.
+
+# Questions
+
+Which technology is not being used in this project?
+- C++
+- JavaScript 
+- Mosquitto
+- C# (X)
+
+If you want to subscribe to all the temperatures from the sensors in the room knowing that the pattern is /group/sensor/temp/. which of this wildcards is valid.
+
+- /#/sensor/temp
+- /+/sensor/temp (X)
+- /+/temp
+- /+/#
 
 
 

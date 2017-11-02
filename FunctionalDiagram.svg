@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="25cm" height="15cm" viewBox="9 -1 482 282" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="10" y="0" width="480" height="280"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" x="10" y="0" width="480" height="280"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="250" y="142.017">
+      <tspan x="250" y="142.017"></tspan>
+    </text>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="36" cy="56" rx="20" ry="20"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="36" cy="56" rx="20" ry="20"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="36" y="58.0167">
+      <tspan x="36" y="58.0167">ESP32</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="108" y="36" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="108" y="36" width="80" height="40"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="148" y="58.0167">
+      <tspan x="148" y="58.0167">Raspberry Pi</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M 248 124.667 C 258.4,118.167 263.6,116 274,116 C 284.4,116 289.6,118.167 300,124.667 L 300,159.333 C 289.6,165.833 284.4,168 274,168 C 263.6,168 258.4,165.833 248,159.333 L 248,124.667z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 248 124.667 C 258.4,118.167 263.6,116 274,116 C 284.4,116 289.6,118.167 300,124.667 L 300,159.333 C 289.6,165.833 284.4,168 274,168 C 263.6,168 258.4,165.833 248,159.333 L 248,124.667"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 248 124.667 C 258.4,131.167 263.6,133.333 274,133.333 C 284.4,133.333 289.6,131.167 300,124.667"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="274" y="144.217">
+      <tspan x="274" y="144.217">mqtt</tspan>
+      <tspan x="274" y="152.683">Server</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" d="M 268.83,110.429 A 136.914,136.914 0 0 0 55.1239,38.6229"/>
+    <polygon style="fill: #000000" points="269.819,114.044 266.185,109.796 268.913,110.405 271.037,108.589 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="269.819,114.044 266.185,109.796 268.913,110.405 271.037,108.589 "/>
+    <polygon style="fill: #000000" points="52.1529,40.9076 54.4758,35.8229 55.072,38.5537 57.6144,39.7152 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="52.1529,40.9076 54.4758,35.8229 55.072,38.5537 57.6144,39.7152 "/>
+  </g>
+  <text font-size="6.77323" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="290" y="10">
+    <tspan x="290" y="10">Low Level</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" d="M 268.306,110.55 A 92.725,92.725 0 0 0 193.838,50.678"/>
+    <polygon style="fill: #000000" points="269.533,114.089 265.668,110.05 268.425,110.506 270.445,108.573 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="269.533,114.089 265.668,110.05 268.425,110.506 270.445,108.573 "/>
+    <polygon style="fill: #000000" points="190.119,50.239 195.31,48.1644 193.856,50.5515 194.893,53.147 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="190.119,50.239 195.31,48.1644 193.856,50.5515 194.893,53.147 "/>
+  </g>
+  <text font-size="6.77323" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="340" y="10">
+    <tspan x="340" y="10">High level</tspan>
+  </text>
+  <g>
+    <ellipse style="fill: #ffffff" cx="36" cy="144" rx="20" ry="20"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="36" cy="144" rx="20" ry="20"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="36" y="146.017">
+      <tspan x="36" y="146.017">ESP32</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="108" y="124" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="108" y="124" width="80" height="40"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="148" y="146.017">
+      <tspan x="148" y="146.017">Raspberry Pi</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" d="M 242.65,122.915 A 197.025,197.025 0 0 0 57.4551,129.594"/>
+    <polygon style="fill: #000000" points="246.005,124.587 240.416,124.505 242.676,122.861 242.717,120.066 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="246.005,124.587 240.416,124.505 242.676,122.861 242.717,120.066 "/>
+    <polygon style="fill: #000000" points="54.2287,131.504 57.1829,126.758 57.4249,129.542 59.7978,131.02 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="54.2287,131.504 57.1829,126.758 57.4249,129.542 59.7978,131.02 "/>
+  </g>
+  <g>
+    <ellipse style="fill: #ffffff" cx="36" cy="232" rx="20" ry="20"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" cx="36" cy="232" rx="20" ry="20"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="36" y="234.017">
+      <tspan x="36" y="234.017">ESP32</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="108" y="212" width="80" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="108" y="212" width="80" height="40"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="148" y="234.017">
+      <tspan x="148" y="234.017">Raspberry Pi</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" d="M 55.5255,248.923 A 138.218,138.218 0 0 0 269.038,173.572"/>
+    <polygon style="fill: #000000" points="270,169.95 271.258,175.397 269.121,173.595 266.398,174.225 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="270,169.95 271.258,175.397 269.121,173.595 266.398,174.225 "/>
+    <polygon style="fill: #000000" points="52.5034,246.706 57.9907,247.774 55.4756,248.993 54.9421,251.737 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="52.5034,246.706 57.9907,247.774 55.4756,248.993 54.9421,251.737 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" d="M 193.872,144.757 A 1238.43,1238.43 0 0 0 242.14,143.719"/>
+    <polygon style="fill: #000000" points="245.887,143.56 241.004,146.282 242.14,143.728 240.779,141.287 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="245.887,143.56 241.004,146.282 242.14,143.728 240.779,141.287 "/>
+    <polygon style="fill: #000000" points="190.122,144.76 195.127,142.269 193.872,144.767 195.117,147.269 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="190.122,144.76 195.127,142.269 193.872,144.767 195.117,147.269 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" d="M 193.83,236.077 A 94.925,94.925 0 0 0 268.725,173.51"/>
+    <polygon style="fill: #000000" points="190.12,236.593 194.831,233.583 193.849,236.2 195.354,238.556 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="190.12,236.593 194.831,233.583 193.849,236.2 195.354,238.556 "/>
+    <polygon style="fill: #000000" points="269.893,169.951 270.893,175.451 268.843,173.551 266.093,174.051 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="269.893,169.951 270.893,175.451 268.843,173.551 266.093,174.051 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="370" y="30" width="100" height="50"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="370" y="30" width="100" height="50"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="420" y="52.7833">
+      <tspan x="420" y="52.7833">mqtt</tspan>
+      <tspan x="420" y="61.25">Monitor app</tspan>
+    </text>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #00ff00" x1="330" y1="10" x2="330" y2="270"/>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" d="M 305.808,139.541 A 159.944,159.944 0 0 0 400.264,84.7849"/>
+    <polygon style="fill: #000000" points="302.111,140.162 306.692,136.958 305.821,139.614 307.422,141.904 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="302.111,140.162 306.692,136.958 305.821,139.614 307.422,141.904 "/>
+    <polygon style="fill: #000000" points="402.639,81.8855 401.512,87.3608 400.32,84.8324 397.583,84.2688 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="402.639,81.8855 401.512,87.3608 400.32,84.8324 397.583,84.2688 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="370" y="200" width="100" height="50"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="370" y="200" width="100" height="50"/>
+    <text font-size="6.77323" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="420" y="222.783">
+      <tspan x="420" y="222.783">Configuration</tspan>
+      <tspan x="420" y="231.25">Apps</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" d="M 400.483,195.223 A 150.416,150.416 0 0 0 305.806,142.974"/>
+    <polygon style="fill: #000000" points="402.861,198.12 397.805,195.736 400.543,195.173 401.735,192.644 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="402.861,198.12 397.805,195.736 400.543,195.173 401.735,192.644 "/>
+    <polygon style="fill: #000000" points="302.087,142.506 307.32,140.54 305.817,142.896 306.8,145.512 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="302.087,142.506 307.32,140.54 305.817,142.896 306.8,145.512 "/>
+  </g>
+</svg>
