@@ -496,23 +496,6 @@ Starting from the last application, you can subscribe to the high level messages
     - Add information about connection status, server ip...
     - Add Children-Lock system.
 
-# Questions
-
-Which technology is not being used in this project?
-- C++
-- JavaScript 
-- Mosquitto
-- C# (X)
-
-If you want to subscribe to all the temperatures from the sensors in the room knowing that the pattern is /group/sensor/temp/. which of this wildcards is valid.
-
-- /#/sensor/temp
-- /+/sensor/temp (X)
-- /+/temp
-- /+/#
-
-
-
 
 
 
